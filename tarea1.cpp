@@ -14,7 +14,7 @@
 
 using namespace std;
 
-// FunciC3n para imprimir un rango de elementos de un arreglo
+// Funcion para imprimir un rango de elementos de un arreglo
 void imprimirArreglo(const string& nombre, int arreglo[], int total, int mostrar = 20) {
 	cout << "\n" << nombre << " (mostrando ";
 	if (mostrar >= total) {
@@ -52,7 +52,7 @@ int main() {
 	} while (n <= 0 );
 
 
-	// Preguntar nC:mero de hilos
+	// Preguntar numero de hilos
 	do {
 		cout << "\nIngrese el numero de hilos a utilizar: ";
 		cin >> numHilos;
@@ -71,25 +71,39 @@ int main() {
 
 	cout << "\n" << endl;
 	cout << "Indique como desea llenar los arreglos:" << endl;
-	cout << "1. Generar valores secuenciales" << endl;
-	cout << "2. Valores aleatorios (0-99)" << endl;
+	cout << "1. Valores aleatorios (0-99)" << endl;
+	cout << "2. Valores manuales" << endl;
+	cout << "3. Generar valores secuenciales" << endl;
 	cout << "Opcion: ";
 	cin >> opcion;
 
 	if (opcion == 1) {
-		// Opcion 1: Valores secuenciales
-		for (int i = 0; i < n; i++) {
-			arregloA[i] = i + 1;
-			arregloB[i] = i + 1 + n;
-		}
-	} else {
-		// OpciC3n 2: Valores aleatorios
+		// Opcion 1: Valores aleatorios
 		srand(time(NULL));
 		for (int i = 0; i < n; i++) {
 			arregloA[i] = rand() % 100;
 			arregloB[i] = rand() % 100;
 		}
-	}
+	} else if (opcion == 2) {
+        // Opcion 2: Valores manuales
+        cout << "\n--- Ingresando valores para Arreglo A ---" << endl;
+        for (int i = 0; i < n; i++) {
+            cout << "A[" << i << "]: ";
+            cin >> arregloA[i];
+        }
+        cout << "\n--- Ingresando valores para Arreglo B ---" << endl;
+        for (int i = 0; i < n; i++) {
+            cout << "B[" << i << "]: ";
+            cin >> arregloB[i];
+        }
+    } else if (opcion == 3) {
+        // Opcion 3: Valores secuenciales (útil para las 4 ejecuciones requeridas)
+        cout << "\nGenerando valores secuenciales..." << endl;
+        for (int i = 0; i < n; i++) {
+            arregloA[i] = i + 1;
+			arregloB[i] = i + 1 + n;
+        }
+    }
 
 	// Mostrar los arreglos originales
 	cout << "\n----------------------- Arreglos originales -----------------------" << endl;
